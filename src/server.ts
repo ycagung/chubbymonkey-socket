@@ -3,16 +3,13 @@ import { Server } from "socket.io";
 import dotenv from "dotenv";
 import cors from "cors";
 import http, { get } from "http";
-import { db } from "./lib/db";
-import { message, user } from "./lib/db/schema";
-import { eq, sql } from "drizzle-orm";
 
 dotenv.config();
 
 const app = express();
 app.use(
   cors({
-    origin: [process.env.CLIENT_URL!], // OR: ['http://localhost:5173', 'https://yourdomain.com']
+    origin: process.env.CLIENT_URL!, // OR: ['http://localhost:5173', 'https://yourdomain.com']
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -23,7 +20,7 @@ const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: [process.env.CLIENT_URL!],
+    origin: process.env.CLIENT_URL!,
     methods: ["GET", "POST"],
     credentials: true,
   },
