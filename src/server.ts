@@ -10,14 +10,20 @@ import { eq, sql } from "drizzle-orm";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.CLIENT_URL!], // OR: ['http://localhost:5173', 'https://yourdomain.com']
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 const httpServer = http.createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CLIENT_URL,
+    origin: [process.env.CLIENT_URL!],
     methods: ["GET", "POST"],
     credentials: true,
   },
