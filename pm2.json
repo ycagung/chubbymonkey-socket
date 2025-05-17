@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "cm-server",
+      "script": "./dist/server.js",
+      "cwd": "/var/www/cm-server",
+      "instances": "1",
+      "exec_mode": "cluster",
+      "watch": true,
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 3080
+      }
+    }
+  ]
+}
