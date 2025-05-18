@@ -53,6 +53,16 @@ io.on("connection", (socket) => {
     io.emit("chat-message", await message.json());
   });
 
+  socket.on("typing", ({ userId }) => {
+    console.log(`User ${userId} is typing`);
+    io.emit("user-typing", userId);
+  });
+
+  socket.on("stop-typing", ({ userId }) => {
+    console.log(`User ${userId} has stopped typing`);
+    io.emit("user-stop-typing", userId);
+  });
+
   socket.on("disconnect", async () => {
     const userId = userMap.get(socket.id);
     if (userId) {
