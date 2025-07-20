@@ -1,1 +1,0 @@
-ALTER TABLE "user" RENAME COLUMN "is_online" TO "last_seen";

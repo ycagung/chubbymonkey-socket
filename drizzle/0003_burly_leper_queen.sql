@@ -1,1 +1,0 @@
-ALTER TABLE "user" ADD COLUMN "is_online" boolean DEFAULT false;

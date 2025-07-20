@@ -49,7 +49,7 @@ io.on("connection", (socket) => {
       body: JSON.stringify(msg),
       headers: { "content-type": "application/json" },
     });
-    // console.log("result", message);
+    console.log("result", message);
     io.emit("chat-message", await message.json());
   });
 
